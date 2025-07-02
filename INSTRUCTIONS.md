@@ -30,36 +30,84 @@ Other important things to mention about the structure:
 
 ## 📝 Instructions
 
-Below, you will find real missions from the institute, each designed to develop a different type of SQL query.
+Below you will find real missions from the institute, each designed to develop a different type of SQL query.
 
-1. Open the file `./src/sql/queries.sql` and write the queries you solve. Separate each query with a semicolon `;`.
+Open the file `./src/sql/queries.sql` and write the queries as you solve them. Separate each query with a semicolon `;`.
 
-     **Example:**
-     ```sql
-     -- Detect extreme temperatures
-     SELECT * FROM climate WHERE avg_temperature > 40 OR avg_temperature < -10;
-     ```
+**Example:**
+```sql
+-- Detect extreme temperatures
+SELECT * FROM climate WHERE avg_temperature > 40 OR avg_temperature < -10;
+```
 
-     When you finish one or more queries, run the following command in the terminal to see the results:
+When you finish one or more queries, run the following command in the terminal to see the results:
 
-     ```bash
-     python src/app.py
-     ```
+```bash
+python src/app.py
+```
 
-     This will automatically execute each of your queries and display the results in the terminal as a table using Pandas.
+This will automatically run each of your queries and display the result in the terminal as a table using Pandas.
 
-     > 💡 **You can modify `queries.sql` as many times as needed** and re-run the command to see the new results.
+> 💡 **You can modify `queries.sql` as many times as you need** and rerun the command to see the new results.
 
+### Level 1 – Basic exploration (SELECT, LIMIT, DISTINCT, WHERE)
 
-2. **Mission 1:** We want to understand the biodiversity of each region. Which regions have the most recorded species?
+1. **What are the first 10 recorded observations?**  
+     _Use LIMIT to show only part of the table._
 
-3. **Mission 2:** Which months have the highest observation activity? Group by month based on actual observation dates. This is useful for detecting seasonality.
+2. **Which region identifiers (`region_id`) appear in the data?**  
+     _Use SELECT DISTINCT to avoid duplicates._
 
-4. **Mission 3:** Detect species with few recorded individuals (possible rare cases).
+3. **How many distinct species (`species_id`) have been observed?**  
+     _Combine COUNT with DISTINCT to avoid counting duplicates._
 
-5. **Mission 4:** Which region has the highest number of distinct species observed?
+4. **How many observations are there for the region with `region_id = 2`?**  
+     _Apply a condition with WHERE._
 
-6. **Mission 5:** Which species have been observed most frequently?
-7. **Mission 6:** We want to identify the most active observers. Who are the people with the most observation records?
-8. **Mission 7:** Which species have never been observed? Check if there are species in the `species` table that do not appear in `observations`.
-9. **Mission 8:** On which dates were the most distinct species observed? This information is ideal for exploring maximum biodiversity on specific days.
+5. **How many observations were recorded on `1998-08-08`?**  
+     _Filter by exact date using equality._
+
+---
+
+### Level 2 – Aggregation and ordering (GROUP BY, COUNT, ORDER BY, HAVING without JOIN)
+
+6. **Which `region_id` has the most observations?**  
+     _Group by region and count how many times each appears._
+
+7. **What are the 5 most frequent `species_id`?**  
+     _Group, order by descending count, and limit the result._
+
+8. **Which species (`species_id`) have fewer than 5 records?**  
+     _Group by species and use HAVING to apply a condition._
+
+9. **Which observers (`observer`) recorded the most observations?**  
+      _Group by observer name and count the records._
+
+---
+
+### Level 3 – Relationships between tables (JOIN)
+
+10. **Show the region name (`regions.name`) for each observation.**  
+      _Join `observations` with `regions` using `region_id`._
+
+11. **Show the scientific name of each recorded species (`species.scientific_name`).**  
+      _Join `observations` with `species` using `species_id`._
+
+12. **Which is the most observed species in each region?**  
+      _Group by region and species, and order by count._
+
+---
+
+### Level 4 (optional) – Data manipulation
+
+> This block is optional and only if you want to practice operations that modify data. (INSERT, UPDATE, DELETE)  
+> As an analyst, you will normally work with read-only databases.
+
+13. **Insert a new fictitious observation into the `observations` table.**  
+      _Be sure to include all fields required by the schema._
+
+14. **Correct the scientific name of a species with a typo.**  
+      _First find the incorrect name and then update it._
+
+15. **Delete a test observation (use its `id`).**  
+      _Be sure not to delete important data._

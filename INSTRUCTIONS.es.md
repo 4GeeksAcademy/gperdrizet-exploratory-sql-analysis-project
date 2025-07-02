@@ -32,37 +32,86 @@ Otras cosas importantes a mencionar sobre la estructura:
 
 A continuación, encontrarás misiones reales del instituto, cada una diseñada para desarrollar un tipo distinto de consulta SQL.
 
-1. Abre el archivo `./src/sql/queries.sql` y escribe las consultas que vayas resolviendo. Separa cada consulta con un punto y coma `;`.
+Abre el archivo `./src/sql/queries.sql` y escribe las consultas que vayas resolviendo. Separa cada consulta con un punto y coma `;`.
 
-    **Ejemplo:**
-    ```sql
-    -- Detectar temperaturas extremas
-    SELECT * FROM climate WHERE avg_temperature > 40 OR avg_temperature < -10;
-    ```
+**Ejemplo:**
+```sql
+-- Detectar temperaturas extremas
+SELECT * FROM climate WHERE avg_temperature > 40 OR avg_temperature < -10;
+```
 
-    Cuando termines una o más consultas, ejecuta el siguiente comando en la terminal para ver los resultados:
+Cuando termines una o más consultas, ejecuta el siguiente comando en la terminal para ver los resultados:
 
-    ```bash
-    python src/app.py
-    ```
+```bash
+python src/app.py
+```
 
-    Esto correrá automáticamente cada una de tus consultas y mostrará el resultado en la terminal como una tabla con Pandas.
+Esto correrá automáticamente cada una de tus consultas y mostrará el resultado en la terminal como una tabla con Pandas.
 
-    > 💡 **Puedes modificar `queries.sql` tantas veces como necesites** y volver a ejecutar el comando para ver los nuevos resultados.
+> 💡 **Puedes modificar `queries.sql` tantas veces como necesites** y volver a ejecutar el comando para ver los nuevos resultados.
 
+### Nivel 1 – Exploración básica (SELECT, LIMIT, DISTINCT, WHERE)
 
-2. **Misión 1:** Queremos conocer la biodiversidad de cada región. ¿Qué regiones tienen más especies registradas?
+1. **¿Cuáles son las primeras 10 observaciones registradas?**  
+   _Utiliza LIMIT para mostrar solo una parte de la tabla._
 
-3. **Misión 2:** ¿Qué meses tienen mayor actividad de observación? Agrupa por mes a partir de las fechas de observación reales. Es útil para detectar estacionalidad.
+2. **¿Qué identificadores de región (`region_id`) aparecen en los datos?**  
+   _Usa SELECT DISTINCT para evitar repeticiones._
 
-4. **Misión 3:** Detecta las especies con pocos individuos registrados (posibles casos raros).
+3. **¿Cuántas especies distintas (`species_id`) se han observado?**  
+   _Combina COUNT con DISTINCT para no contar duplicados._
 
-5. **Misión 4:** ¿Qué región tiene el mayor número de especies distintas observadas?
+4. **¿Cuántas observaciones hay para la región con `region_id = 2`?**  
+   _Aplica una condición con WHERE._
 
-6. **Misión 5:** ¿Qué especies han sido observadas con mayor frecuencia?
-7. **Misión 6:** Queremos identificar a los observadores más activos. ¿Quiénes son las personas que más registros de observación han realizado?
-8. **Misión 7:** ¿Qué especies no han sido observadas nunca? Comprueba si existen especies en la tabla `species` que no aparecen en `observations`.
-9. **Misión 8:** ¿En qué fechas se observaron más especies distintas? Esta informacion es ideal para explorar la biodiversidad máxima en días específicos.
+5. **¿Cuántas observaciones se registraron el día `1998-08-08`?**  
+   _Filtra por fecha exacta usando igualdad._
+
+---
+
+### Nivel 2 – Agregación y ordenamiento (GROUP BY, COUNT, ORDER BY, HAVING sin JOIN)
+
+6. **¿Cuál es el `region_id` con más observaciones?**  
+   _Agrupa por región y cuenta cuántas veces aparece cada una._
+
+7. **¿Cuáles son los 5 `species_id` más frecuentes?**  
+   _Agrupa, ordena por cantidad descendente y limita el resultado._
+
+8. **¿Qué especies (`species_id`) tienen menos de 5 registros?**  
+   _Agrupa por especie y usa HAVING para aplicar una condición._
+
+9. **¿Qué observadores (`observer`) registraron más observaciones?**  
+    _Agrupa por el nombre del observador y cuenta los registros._
+
+---
+
+### Nivel 3 – Relaciones entre tablas (JOIN)
+
+10. **Muestra el nombre de la región (`regions.name`) para cada observación.**  
+    _Relaciona `observations` con `regions` usando `region_id`._
+
+11. **Muestra el nombre científico de cada especie registrada (`species.scientific_name`).**  
+    _Relaciona `observations` con `species` usando `species_id`._
+
+12. **¿Cuál es la especie más observada por cada región?**  
+    _Agrupa por región y especie, y ordena por cantidad._
+
+---
+
+### Nivel 4 (opcional) – Manipulación de datos
+
+> Este bloque es opcional y solo si deseas practicar operaciones que modifican los datos. (INSERT, UPDATE, DELETE) 
+> Como analista, normalmente trabajarás con bases de solo lectura.
+
+13. **Inserta una nueva observación ficticia en la tabla `observations`.**  
+    _Asegúrate de incluir todos los campos requeridos por el esquema._
+
+14. **Corrige el nombre científico de una especie con error tipográfico.**  
+    _Busca primero el nombre incorrecto y luego actualízalo._
+
+15. **Elimina una observación de prueba (usa su `id`).**  
+    _Asegúrate de no borrar datos importantes._
+
 
 
 

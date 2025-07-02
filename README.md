@@ -2,6 +2,8 @@
 # SQL Project: Global Life Institute Data Detectives
 <!-- endhide -->
 
+> Have you finished the SQL Bolt interactive exercises? We strongly recommend doing them before moving forward with this project.
+
 This is what you will learn during this project:
 
 - Use a preloaded database with pre-existing data.

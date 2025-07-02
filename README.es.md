@@ -2,6 +2,8 @@
 # Proyecto SQL: Detectives de Datos del Instituto Global de la Vida 
 <!-- endhide -->
 
+> ¿Has terminado los ejercicios interactivos de SQL Bolt? Te recomendamos encarecidamente hacerlos antes de continuar con este proyecto.
+
 Esto es lo que aprenderas con el proyecto:
 
 - Usa una base de datos ya preparada con datos cargados previamente.
