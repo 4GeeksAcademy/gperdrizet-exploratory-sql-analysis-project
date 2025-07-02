@@ -16,7 +16,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cp .env.example .env && pip install -r requirements.txt && python src/init_db.py"
+	"postCreateCommand": "pip install -r requirements.txt && python src/init_db.py"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
