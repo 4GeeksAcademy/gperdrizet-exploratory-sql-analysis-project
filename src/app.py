@@ -27,17 +27,34 @@ def run_queries_from_file(engine, filepath):
     try:
         with open(filepath, 'r') as file:
             content = file.read()
-        queries = [q.strip() for q in content.split(';') if q.strip()]
-        for i, query in enumerate(queries, start=0):
-            # Skip if it's just a comment
-            if query.startswith('--') or not any(c.isalnum() for c in query):
-                continue
+
+        # Split the query file into a line array
+        query_lines = content.split('\n')
+
+        # Remove empty elements
+        query_lines = [l for l in query_lines if len(l) > 0]
+
+        # Remove comments
+        query_lines = [l for l in query_lines if '--' not in l]
+
+        # Join back to single string
+        queries = ' '.join(query_lines)
+
+        # Now split on semicolon to recover individual queries
+        queries = queries.split(';')
+
+        # Loop to submit the queries, omitting the last - it will always be empty due
+        # to splitting on the last queries ';'.
+        for i, query in enumerate(queries[:-1], start=1):
+
             try:
                 print(f"\n🔎 Query {i}:\n{query}")
                 df = pd.read_sql(query, con=engine)
-                print(df)
+                print(df.head())
             except Exception as e:
                 print(f"❌ Error in Query {i}: {e}")
+
+
     except Exception as e:
         print(f"❌ Error processing queries from {filepath}: {e}")
 
