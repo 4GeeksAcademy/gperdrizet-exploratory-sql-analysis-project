@@ -1,59 +1,119 @@
-<!-- hide -->
-# SQL Project: Global Life Institute Data Detectives
-<!-- endhide -->
+# Global Institute of Life (GIL): Biodiversity SQL Analysis Project
 
-> Have you finished the SQL Bolt interactive exercises? We strongly recommend doing them before moving forward with this project.
+A hands-on project focused on SQL querying, data exploration, and logical analysis using real-world biodiversity data. This project demonstrates the end-to-end process of extracting insights from a structured database, analyzing patterns in species observations, and communicating findings using SQL.
 
-This is what you will learn during this project:
+![Project Preview](assets/preview.png)
 
-- Use a preloaded database with pre-existing data.
-- Execute SQL statements to explore and analyze data in a biodiversity and climate change scenario.
-- Practice inserting, updating, and deleting relevant data as part of a data quality maintenance simulation.
-- Use SQL Alchemy, the industry's most popular library for connecting to SQL databases.
-- Use Pandas to display the results of your queries as DataFrames.
+## Project Overview
+This project places you in the role of a junior data analyst at the fictional Global Institute of Life (GIL). Your mission is to explore a preloaded database containing historical and current biodiversity data, execute SQL queries to answer real-world questions, and communicate your findings using SQL.
 
-Within this repository, you will find a file named `./INSTRUCTIONS.md` with the necessary steps to complete it.
+**Key topics covered include:**
+- SQL querying for data exploration and pattern detection
+- Aggregation, filtering, and joining tables
+- Best practices for working with professional project structures
 
-<how-to-start>
-  
-## 🌱 How to start this project
+## Learning Objectives
+### Data Acquisition & Processing
+- Explore and understand a real-world biodiversity database
+- Write SQL queries to extract, aggregate, and analyze data
+- Store and manipulate data using SQLite and SQLAlchemy
 
-This project comes with the necessary files to start working immediately.
+## Getting Started
+### Using GitHub Codespaces (Recommended)
+Launch this project instantly in a fully configured cloud development environment:
 
-We recommend opening this very same repository using a provisioning tool like [Codespaces](https://4geeks.com/lesson/what-is-github-codespaces) (recommended) or [Gitpod](https://4geeks.com/lesson/how-to-use-gitpod). Alternatively, you can clone it on your local computer using the `git clone` command. 
+1. Click the green "Code" button on the GitHub repository
+2. Select the "Codespaces" tab
+3. Click "Create codespace on main"
+4. Wait for the environment to initialize (all dependencies will be installed automatically)
+5. Open `src/app.py` or `src/sql/queries.sql` to start the analysis
 
-This is the repository you need to fork and open:
+GitHub Codespaces provides a complete VS Code environment in your browser with all required extensions and packages pre-installed.
 
-```text
-https://github.com/4GeeksAcademy/exploratory-sql-analysis-project
+### Local Installation
+#### Prerequisites
+- Python 3.11+
+- Jupyter Notebook or VS Code with Jupyter extension (optional, for further analysis)
+
+#### Steps
+Clone the repository:
+```bash
+git clone https://github.com/4GeeksAcademy/gperdrizet-exploratory-sql-analysis-project.git
+cd gperdrizet-exploratory-sql-analysis-project
+```
+Create a virtual environment (recommended):
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+Run the project:
+```bash
+python src/app.py
+```
+Or open the notebook files in VS Code with the Jupyter extension for further exploration.
+
+## Project Structure
+```
+├── assets/                 # Resources and preview images
+│   └── preview.png         # Project preview image
+├── data/                   # SQLite database and data files
+│   └── database.db         # Biodiversity data
+├── src/                    # Source code and SQL scripts
+│   ├── app.py              # Main script to run and display query results
+│   ├── init_db.py          # Database initialization script
+│   └── sql/                # SQL scripts
+│       ├── create.sql      # Table definitions
+│       ├── insert.sql      # Data insertion
+│       └── queries.sql     # Your queries go here
+├── requirements.txt        # Python dependencies
+├── INSTRUCTIONS.md         # Assignment instructions and missions
+└── README.md               # Project documentation
 ```
 
-**👉 Please follow these steps on** [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project).
+## Analysis Overview
+### Data Exploration
+- Examine the structure and contents of the biodiversity database
+- Use SELECT, LIMIT, DISTINCT, and WHERE to answer basic questions
 
-Once your project and code have finished opening, you can go ahead and open the `./src/sql/queries.sql` file and start solving each exercise inside the notebook.
+### Aggregation & Ordering
+- Use GROUP BY, COUNT, ORDER BY, and HAVING to analyze trends and patterns
 
-</how-to-start>
+### Table Relationships
+- Use JOINs to combine data from multiple tables and enrich your analysis
 
-## 🚀 Make Your Work Visible
+### (Optional) Data Manipulation
+- Practice INSERT, UPDATE, and DELETE operations for data quality maintenance
 
-One of the main goals of this project is to showcase real and applied skills on your professional profile. You worked with real open data from the [GBIF](https://www.gbif.org/) portal, executed SQL queries, analyzed biodiversity, and visualized valuable patterns.
+## Key Concepts Covered
+- SQL querying and best practices
+- Professional project structure and workflow
 
-Publish an insight on LinkedIn that demonstrates analytical thinking based on real data.
+## Sample Data
+The project uses real-world biodiversity data based on open datasets from the [GBIF](https://www.gbif.org/) portal, providing up-to-date and relevant insights into species observations and ecosystem monitoring.
 
-### What to Share?
-Based on your analysis, write one or two sentences summarizing what you discovered. The goal is to communicate your findings objectively, briefly, and backed by data. Add a chart if you like, and use hashtags to amplify your reach.
+## Technologies Used
+- Python 3.11: Core programming language
+- SQLAlchemy: Database connection and management
+- SQLite: Lightweight database for structured storage
 
-### ✨ Postable Examples
+## Contributing
+This project is designed for educational purposes. Contributions to improve the analysis, add new queries, or enhance explanations are welcome:
 
-> **"The top 5 most observed species in my region [Buenos Aires] account for 27% of the total records in that area. Their dominant presence might indicate unique adaptive habits. 🐦📍 #Biodiversity #DataScience"**
+1. Fork the repository
+2. Create a feature branch
+3. Make your improvements
+4. Submit a pull request
 
-> **"New South Wales (Australia) leads in diversity with over 120 distinct species recorded. Real GBIF data reveals unexpected biodiversity hotspots! 🌿🌏 #SQL #OpenData"**
+## Educational Value
+This project is ideal for:
+- Learners interested in SQL and real-world data analysis
+- Data science students seeking hands-on experience
+- Anyone wanting to practice data exploration, querying, and reporting in Python
 
+You'll gain practical skills in extracting, transforming, and communicating data, with a focus on best practices and clear communication of insights.
 
-## 🚛 How to deliver this project
-
-Once you have finished solving the exercises, be sure to commit your changes, push them to your repository, and go to 4Geeks.com to upload the repository link.
-
-## Solutions
-
-We also incorporated the solution samples in `./src/solution.py` that we strongly suggest you only use if you are stuck for more than 30 minutes or if you have already finished and want to compare it with your approach.
+For detailed assignment instructions and missions, see [`INSTRUCTIONS.md`](INSTRUCTIONS.md).
