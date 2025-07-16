@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 import pandas as pd
 
 
@@ -10,6 +10,10 @@ load_dotenv()
 # Read DB path from environment variable
 DB_PATH = os.getenv('DB_PATH', './data/database.db')  # fallback to default
 DB_URL = f'sqlite:///{DB_PATH}'
+
+# Set list of database modifying queries so we can easily catch and
+# handle the returns easily later.
+modifications = ['INSERT', 'UPDATE', 'DELETE']
 
 # Connect to the existing SQLite database
 def connect():
@@ -47,10 +51,20 @@ def run_queries_from_file(engine, filepath):
         # to splitting on the last queries ';'.
         for i, query in enumerate(queries[:-1], start=1):
 
+            print(f"\n🔎 Query {i}:\n{query}")
+
             try:
-                print(f"\n🔎 Query {i}:\n{query}")
-                df = pd.read_sql(query, con=engine)
-                print(df.head())
+                if any(modification in query for modification in modifications):
+
+                    with engine.connect() as connection:
+                        result = connection.execute(text(query))
+                        connection.commit()
+                        print(f"{result.rowcount} rows updated")
+
+                else:
+                    df = pd.read_sql(query, con=engine)
+                    print(df.head())
+
             except Exception as e:
                 print(f"❌ Error in Query {i}: {e}")
 
