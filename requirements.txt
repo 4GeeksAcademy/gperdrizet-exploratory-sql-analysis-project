@@ -1,3 +1,3 @@
-# Base ----------------------------------------
-sqlalchemy
+dotenv
 pandas
+sqlalchemy
