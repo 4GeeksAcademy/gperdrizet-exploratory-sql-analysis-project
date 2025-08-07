@@ -3,7 +3,7 @@
 {
 	"name": "Python 3.11",
 	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
-	"onCreateCommand": "sudo apt update && sudo apt upgrade -y && pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
+	"onCreateCommand": "sudo apt update && sudo apt upgrade -y && sudo apt install -y sqlite3 && pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
 	"customizations": {
 	  "vscode": {
 		"settings": {
