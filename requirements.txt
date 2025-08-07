@@ -1,4 +1,2 @@
-ipykernel==6.30.0
-jupyter
 pandas==2.3.1
-sqlalchemy
+sqlalchemy==2.0.42
