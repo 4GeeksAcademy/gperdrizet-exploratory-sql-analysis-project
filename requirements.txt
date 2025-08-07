@@ -1,3 +1,2 @@
-dotenv
-pandas
-sqlalchemy
+pandas==2.3.1
+sqlalchemy==2.0.42

@@ -1,12 +1,8 @@
 import os
-from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
-# Load environment variables
-load_dotenv()
-
 # Read DB path from environment variable
-DB_PATH = os.getenv('DB_PATH', './data/database.db')  # fallback to default
+DB_PATH = './data/database.db'
 DB_URL = f'sqlite:///{DB_PATH}'
 
 # Ensure the data directory exists
@@ -25,6 +21,7 @@ def initialize_database():
                 for stmt in create_sql.split(';'):
                     if stmt.strip():
                         connection.execute(text(stmt.strip()))
+
             print("🧱 Tables created successfully.")
 
             with open('./src/sql/insert.sql', 'r') as f:
@@ -33,6 +30,7 @@ def initialize_database():
                     if stmt.strip():
                         connection.execute(text(stmt.strip()))
             print("🌱 Data inserted successfully.")
+
     except Exception as e:
         print(f"❌ Initialization error: {e}")
 

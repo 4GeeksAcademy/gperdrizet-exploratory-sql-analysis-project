@@ -1,14 +1,9 @@
-import os
-from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
 import pandas as pd
+from sqlalchemy import create_engine, text
 
-
-# Load environment variables
-load_dotenv()
 
 # Read DB path from environment variable
-DB_PATH = os.getenv('DB_PATH', './data/database.db')  # fallback to default
+DB_PATH = './data/database.db'
 DB_URL = f'sqlite:///{DB_PATH}'
 
 # Set list of database modifying queries so we can easily catch and
