@@ -94,7 +94,7 @@ For detailed assignment instructions and objectives, see [`INSTRUCTIONS.md`](INS
 │       ├── queries.sql    # Your queries go here
 │       └── solution.sql   # Your queries go here
 │
-├── .gitignore             # File and directories not tracked by git
+├── .gitignore             # Files/directories not tracked by git
 ├── requirements.txt       # Python dependencies
 ├── INSTRUCTIONS.md        # Assignment instructions and missions
 └── README.md              # Project documentation
