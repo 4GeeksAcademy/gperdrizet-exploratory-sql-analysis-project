@@ -107,7 +107,6 @@ The project uses real-world biodiversity data based on open datasets from the [G
 
 ## Learning Objectives
 
-### Data Acquisition & Processing
 - Explore and understand a real-world biodiversity database
 - Write SQL queries to extract, aggregate, and analyze data
 - Store and manipulate data using SQLite and SQLAlchemy
