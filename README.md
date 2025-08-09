@@ -79,8 +79,7 @@ For detailed assignment instructions and objectives, see [`INSTRUCTIONS.md`](INS
 ## Project Structure
 ```
 ├── .devcontainer/         # Codespace/development container configuration
-├── assets/                # Resources and preview images
-│   └── preview.png        # Project preview image
+├── assets/                # Images and other files 
 │
 ├── data/                  # SQLite database and data files
 │   └── database.db        # Biodiversity data
@@ -92,7 +91,7 @@ For detailed assignment instructions and objectives, see [`INSTRUCTIONS.md`](INS
 │       ├── create.sql     # Table definitions
 │       ├── insert.sql     # Data insertion
 │       ├── queries.sql    # Your queries go here
-│       └── solution.sql   # Your queries go here
+│       └── solution.sql   # Reference solution
 │
 ├── .gitignore             # Files/directories not tracked by git
 ├── requirements.txt       # Python dependencies
